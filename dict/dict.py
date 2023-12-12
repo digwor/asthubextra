@@ -11,7 +11,6 @@ def get_user_by_email(email: str) -> dict | None:
         if user.get('email') == email:
             return user
 
-
 def delete_user_by_email(email: str) -> None:
     user = get_user_by_email(email)
 
@@ -37,8 +36,17 @@ def show_list_of_users() -> None:
 def authorization(email: str, password: str) -> dict | None:
     for user in users:
         if user.get('email') == email and user.get('password') == password:
-            print('You have successfully logged in')
-            print(user)
+            print()
+            print('You have successfully logged in!')
+            print()
+            for key, value in user.items():
+                print(f'{key}: {value}')
+            input()
+        elif user.get('email') == email and user.get('password') != password:
+            print('Wrong password!')
+            input()
+        else:
+            input('User not found!')
 
 def menu():
     print()
